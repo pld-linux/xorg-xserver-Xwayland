@@ -30,6 +30,7 @@ BuildRequires:	libgcrypt-devel
 BuildRequires:	meson >= 0.46.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pixman-devel
+BuildRequires:	rpmbuild(macros) >= 1.736
 %{?with_systemtap:BuildRequires:	systemtap-sdt-devel}
 BuildRequires:	tar >= 1:1.22
 # wayland-client
