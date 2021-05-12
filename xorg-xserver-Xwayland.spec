@@ -71,6 +71,8 @@ Requires:	xorg-app-xkbcomp
 Requires:	xorg-lib-libXext >= 1.0.99.4
 Requires:	xorg-lib-libXfont2 >= 2.0
 Requires:	xorg-lib-libxshmfence >= 1.1
+# for protocol.txt
+Requires:	xorg-xserver-common >= 1.20
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -107,7 +109,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %ninja_install -C build
 
-# TODO: xorg-xserver-common package (files shared with xorg-xserver-server)
+# xorg-xserver-common package (common dependency for Xwayland and Xorg)
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/xorg/protocol.txt
 %{__rm} $RPM_BUILD_ROOT%{_mandir}/man1/Xserver.1
 
