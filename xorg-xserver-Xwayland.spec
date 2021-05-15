@@ -12,7 +12,7 @@ Summary:	Xwayland - X server integrated into a Wayland window system
 Summary(pl.UTF-8):	Xwayland - serwer X integrowalny w Wayland
 Name:		xorg-xserver-Xwayland
 Version:	21.1.1
-Release:	0.1
+Release:	1
 License:	MIT
 Group:		X11/Servers
 Source0:	https://xorg.freedesktop.org/releases/individual/xserver/xwayland-%{version}.tar.xz
@@ -81,6 +81,19 @@ Xwayland - server integrated into a Wayland window system.
 %description -l pl.UTF-8
 Xwayland - serwer X integrowalny w Wayland.
 
+%package devel
+Summary:	Development file for Xwayland server
+Summary(pl.UTF-8):	Plik programistyczny serwera Xwayland
+Group:		Development/Libraries
+
+%description devel
+Development file for Xwayland server, containing server build
+configuration.
+
+%description devel -l pl.UTF-8
+Plik programistyczny serwera Xwayland, zawierający konfigurację
+zbudowanego serwera.
+
 %prep
 %setup -q -n xwayland-%{version}
 
@@ -120,5 +133,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc COPYING README.md
 %attr(755,root,root) %{_bindir}/Xwayland
-%{_pkgconfigdir}/xwayland.pc
 %{_mandir}/man1/Xwayland.1*
+
+%files devel
+%defattr(644,root,root,755)
+%{_pkgconfigdir}/xwayland.pc
