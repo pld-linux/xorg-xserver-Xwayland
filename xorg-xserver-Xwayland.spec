@@ -18,7 +18,10 @@ Group:		X11/Servers
 Source0:	https://xorg.freedesktop.org/releases/individual/xserver/xwayland-%{version}.tar.xz
 # Source0-md5:	ff45f0bb14c3ab2f984f0a83c880fce6
 URL:		https://xorg.freedesktop.org/
+BuildRequires:	Mesa-dri-devel
 %{?with_glamor:BuildRequires:	Mesa-libgbm-devel >= 10.2}
+BuildRequires:	OpenGL-devel >= 1.2
+%{?with_xselinux:BuildRequires:	audit-libs-devel}
 %{?with_eglstream:BuildRequires:	egl-wayland-devel}
 BuildRequires:	libbsd-devel
 BuildRequires:	libdrm-devel >= 2.4.89
@@ -26,6 +29,7 @@ BuildRequires:	libdrm-devel >= 2.4.89
 # also possible: libsha, nettle, openssl
 BuildRequires:	libgcrypt-devel
 %{?with_xselinux:BuildRequires:	libselinux-devel >= 2.0.86}
+BuildRequires:	libtirpc-devel
 %{?with_libunwind:BuildRequires:	libunwind-devel}
 BuildRequires:	meson >= 0.46.0
 BuildRequires:	ninja >= 1.5
@@ -36,6 +40,7 @@ BuildRequires:	tar >= 1:1.22
 # wayland-client
 BuildRequires:	wayland-devel >= 1.3.0
 BuildRequires:	wayland-protocols >= 1.18
+BuildRequires:	xorg-lib-libXau-devel
 BuildRequires:	xorg-lib-libXdmcp-devel
 BuildRequires:	xorg-lib-libXext-devel >= 1.0.99.4
 BuildRequires:	xorg-lib-libXfont2-devel >= 2.0
@@ -48,10 +53,12 @@ BuildRequires:	xorg-proto-damageproto-devel >= 1.1
 BuildRequires:	xorg-proto-dri3proto-devel >= 1.2
 BuildRequires:	xorg-proto-fixesproto-devel >= 5.0
 BuildRequires:	xorg-proto-fontsproto-devel >= 2.1.3
+BuildRequires:	xorg-proto-glproto-devel >= 1.4.17
 BuildRequires:	xorg-proto-inputproto-devel >= 2.3
 BuildRequires:	xorg-proto-kbproto-devel >= 1.0.3
-BuildRequires:	xorg-proto-recordproto-devel >= 1.13.99.1
+BuildRequires:	xorg-proto-presentproto-devel >= 1.2
 BuildRequires:	xorg-proto-randrproto-devel >= 1.6.0
+BuildRequires:	xorg-proto-recordproto-devel >= 1.13.99.1
 BuildRequires:	xorg-proto-renderproto-devel >= 0.11
 BuildRequires:	xorg-proto-resourceproto-devel >= 1.2.0
 BuildRequires:	xorg-proto-scrnsaverproto-devel >= 1.1
