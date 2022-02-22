@@ -26,7 +26,7 @@ BuildRequires:	OpenGL-devel >= 1.2
 BuildRequires:	libbsd-devel
 BuildRequires:	libdrm-devel >= 2.4.89
 %{?with_glamor:BuildRequires:	libepoxy-devel}
-# also possible: libsha, nettle, openssl
+# also possible: libmd, libsha, nettle, openssl
 BuildRequires:	libgcrypt-devel
 %{?with_xselinux:BuildRequires:	libselinux-devel >= 2.0.86}
 BuildRequires:	libtirpc-devel
@@ -134,6 +134,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/xorg/protocol.txt
 %{__rm} $RPM_BUILD_ROOT%{_mandir}/man1/Xserver.1
 
+%{__rm} $RPM_BUILD_ROOT%{_docdir}/xorg-server/Xserver-DTrace.*
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -145,4 +147,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
+%doc build/doc/{Xinput,Xserver-spec}.html build/doc/dtrace/Xserver-DTrace.html
 %{_pkgconfigdir}/xwayland.pc
