@@ -22,6 +22,7 @@ BuildRequires:	Mesa-dri-devel
 %{?with_glamor:BuildRequires:	Mesa-libgbm-devel >= 10.2}
 BuildRequires:	OpenGL-devel >= 1.2
 %{?with_xselinux:BuildRequires:	audit-libs-devel}
+BuildRequires:	docbook-dtd43-xml
 %{?with_eglstream:BuildRequires:	egl-wayland-devel}
 BuildRequires:	libbsd-devel
 BuildRequires:	libdrm-devel >= 2.4.89
@@ -70,6 +71,7 @@ BuildRequires:	xorg-proto-xextproto-devel >= 7.2.99.901
 BuildRequires:	xorg-proto-xf86vidmodeproto-devel >= 2.2.99.1
 BuildRequires:	xorg-proto-xineramaproto-devel
 BuildRequires:	xorg-proto-xproto-devel >= 7.0.31
+BuildRequires:	xorg-sgml-doctools
 BuildRequires:	xz
 %{?with_glamor:Requires:	Mesa-libgbm >= 10.2}
 Requires:	libdrm >= 2.4.89
