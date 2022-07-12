@@ -7,6 +7,7 @@
 %bcond_without	xselinux	# XSELINUX extension
 %bcond_without	libunwind	# libunwind for backtracing
 %bcond_with	systemtap	# systemtap/dtrace probes
+%bcond_without	doc		# don't build documentation
 
 Summary:	Xwayland - X server integrated into a Wayland window system
 Summary(pl.UTF-8):	Xwayland - serwer X integrowalny w Wayland
@@ -41,6 +42,7 @@ BuildRequires:	tar >= 1:1.22
 # wayland-client
 BuildRequires:	wayland-devel >= 1.5.0
 BuildRequires:	wayland-protocols >= 1.22
+%{?with_doc:BuildRequires:	xmlto}
 BuildRequires:	xorg-lib-libXau-devel
 BuildRequires:	xorg-lib-libXdmcp-devel
 BuildRequires:	xorg-lib-libXext-devel >= 1.0.99.4
@@ -71,7 +73,7 @@ BuildRequires:	xorg-proto-xextproto-devel >= 7.2.99.901
 BuildRequires:	xorg-proto-xf86vidmodeproto-devel >= 2.2.99.1
 BuildRequires:	xorg-proto-xineramaproto-devel
 BuildRequires:	xorg-proto-xproto-devel >= 7.0.31
-BuildRequires:	xorg-sgml-doctools
+%{?with_doc:BuildRequires:	xorg-sgml-doctools}
 BuildRequires:	xz
 %{?with_glamor:Requires:	Mesa-libgbm >= 10.2}
 Requires:	libdrm >= 2.4.89
@@ -112,6 +114,9 @@ zbudowanego serwera.
 	-Dbuilder_addr="feedback@pld-linux.org" \
 	-Dbuilder_string="%{name}-%{version}-%{release}" \
 	-Ddefault_font_path="%{_fontsdir}/misc,%{_fontsdir}/TTF,%{_fontsdir}/OTF,%{_fontsdir}/Type1,%{_fontsdir}/100dpi,%{_fontsdir}/75dpi" \
+	-Ddevel-docs=%{__true_false doc} \
+	-Ddocs=%{__true_false doc} \
+	-Ddocs-pdf=false \
 	%{?with_systemtap:-Ddtrace=true} \
 	%{!?with_glamor:-Dglamor=false} \
 	%{?with_libunwind:-Dlibunwind=true} \
@@ -136,7 +141,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/xorg/protocol.txt
 %{__rm} $RPM_BUILD_ROOT%{_mandir}/man1/Xserver.1
 
-%{__rm} $RPM_BUILD_ROOT%{_docdir}/xorg-server/Xserver-DTrace.*
+%{?with_doc:%{__rm} $RPM_BUILD_ROOT%{_docdir}/xorg-server/Xserver-DTrace.*}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -149,5 +154,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc build/doc/{Xinput,Xserver-spec}.html build/doc/dtrace/Xserver-DTrace.html
+%{?with_doc:%doc build/doc/{Xinput,Xserver-spec}.html build/doc/dtrace/Xserver-DTrace.html}
 %{_pkgconfigdir}/xwayland.pc
