@@ -36,6 +36,7 @@ BuildRequires:	libtirpc-devel
 BuildRequires:	meson >= 0.47.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pixman-devel
+BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.736
 %{?with_systemtap:BuildRequires:	systemtap-sdt-devel}
 BuildRequires:	tar >= 1:1.22
