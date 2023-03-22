@@ -12,12 +12,12 @@
 Summary:	Xwayland - X server integrated into a Wayland window system
 Summary(pl.UTF-8):	Xwayland - serwer X integrowalny w Wayland
 Name:		xorg-xserver-Xwayland
-Version:	22.1.8
+Version:	23.1.0
 Release:	1
 License:	MIT
 Group:		X11/Servers
 Source0:	https://xorg.freedesktop.org/releases/individual/xserver/xwayland-%{version}.tar.xz
-# Source0-md5:	96879f938a91b0441ea784220159d843
+# Source0-md5:	138c9be5c6b4181b125e4287dfcbeeb1
 URL:		https://xorg.freedesktop.org/
 BuildRequires:	Mesa-dri-devel
 %{?with_glamor:BuildRequires:	Mesa-libgbm-devel >= 10.2}
@@ -26,14 +26,15 @@ BuildRequires:	OpenGL-devel >= 1.2
 BuildRequires:	docbook-dtd43-xml
 %{?with_eglstream:BuildRequires:	egl-wayland-devel}
 BuildRequires:	libbsd-devel
-BuildRequires:	libdrm-devel >= 2.4.89
+BuildRequires:	libdecor-devel
+BuildRequires:	libdrm-devel >= 2.4.109
 %{?with_glamor:BuildRequires:	libepoxy-devel}
 # also possible: libmd, libsha, nettle, openssl
 BuildRequires:	libgcrypt-devel
 %{?with_xselinux:BuildRequires:	libselinux-devel >= 2.0.86}
 BuildRequires:	libtirpc-devel
 %{?with_libunwind:BuildRequires:	libunwind-devel}
-BuildRequires:	meson >= 0.47.0
+BuildRequires:	meson >= 0.52.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pixman-devel
 BuildRequires:	pkgconfig
@@ -41,8 +42,8 @@ BuildRequires:	rpmbuild(macros) >= 1.736
 %{?with_systemtap:BuildRequires:	systemtap-sdt-devel}
 BuildRequires:	tar >= 1:1.22
 # wayland-client
-BuildRequires:	wayland-devel >= 1.18.0
-BuildRequires:	wayland-protocols >= 1.22
+BuildRequires:	wayland-devel >= 1.21.0
+BuildRequires:	wayland-protocols >= 1.28
 %{?with_doc:BuildRequires:	xmlto}
 BuildRequires:	xorg-lib-libXau-devel
 BuildRequires:	xorg-lib-libXdmcp-devel
@@ -74,12 +75,13 @@ BuildRequires:	xorg-proto-xextproto-devel >= 7.2.99.901
 BuildRequires:	xorg-proto-xf86vidmodeproto-devel >= 2.2.99.1
 BuildRequires:	xorg-proto-xineramaproto-devel
 BuildRequires:	xorg-proto-xproto-devel >= 7.0.31
+BuildRequires:	xorg-proto-xwaylandproto-devel >= 1.0
 %{?with_doc:BuildRequires:	xorg-sgml-doctools}
 BuildRequires:	xz
 %{?with_glamor:Requires:	Mesa-libgbm >= 10.2}
-Requires:	libdrm >= 2.4.89
+Requires:	libdrm >= 2.4.109
 %{?with_xselinux:Requires:	libselinux >= 2.0.86}
-Requires:	wayland >= 1.18.0
+Requires:	wayland >= 1.21.0
 Requires:	xorg-app-xkbcomp
 Requires:	xorg-lib-libXext >= 1.0.99.4
 Requires:	xorg-lib-libXfont2 >= 2.0
@@ -151,6 +153,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc COPYING README.md
 %attr(755,root,root) %{_bindir}/Xwayland
+%{_desktopdir}/org.freedesktop.Xwayland.desktop
 %{_mandir}/man1/Xwayland.1*
 
 %files devel
