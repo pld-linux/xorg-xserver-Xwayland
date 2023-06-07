@@ -12,15 +12,15 @@
 Summary:	Xwayland - X server integrated into a Wayland window system
 Summary(pl.UTF-8):	Xwayland - serwer X integrowalny w Wayland
 Name:		xorg-xserver-Xwayland
-Version:	23.1.1
+Version:	23.1.2
 Release:	1
 License:	MIT
 Group:		X11/Servers
 Source0:	https://xorg.freedesktop.org/releases/individual/xserver/xwayland-%{version}.tar.xz
-# Source0-md5:	49f3d1d6b54661e02c0dda1d4811e117
+# Source0-md5:	7531f16ecef79ace2b513bf3c640fd60
 URL:		https://xorg.freedesktop.org/
 BuildRequires:	Mesa-dri-devel
-%{?with_glamor:BuildRequires:	Mesa-libgbm-devel >= 10.2}
+%{?with_glamor:BuildRequires:	Mesa-libgbm-devel >= 21.3}
 BuildRequires:	OpenGL-devel >= 1.2
 %{?with_xselinux:BuildRequires:	audit-libs-devel}
 BuildRequires:	docbook-dtd43-xml
@@ -78,7 +78,7 @@ BuildRequires:	xorg-proto-xproto-devel >= 7.0.31
 BuildRequires:	xorg-proto-xwaylandproto-devel >= 1.0
 %{?with_doc:BuildRequires:	xorg-sgml-doctools}
 BuildRequires:	xz
-%{?with_glamor:Requires:	Mesa-libgbm >= 10.2}
+%{?with_glamor:Requires:	Mesa-libgbm >= 21.3}
 Requires:	libdrm >= 2.4.109
 %{?with_xselinux:Requires:	libselinux >= 2.0.86}
 Requires:	wayland >= 1.21.0
