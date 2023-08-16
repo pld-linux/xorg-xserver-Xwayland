@@ -12,12 +12,12 @@
 Summary:	Xwayland - X server integrated into a Wayland window system
 Summary(pl.UTF-8):	Xwayland - serwer X integrowalny w Wayland
 Name:		xorg-xserver-Xwayland
-Version:	23.1.2
+Version:	23.2.0
 Release:	1
 License:	MIT
 Group:		X11/Servers
 Source0:	https://xorg.freedesktop.org/releases/individual/xserver/xwayland-%{version}.tar.xz
-# Source0-md5:	7531f16ecef79ace2b513bf3c640fd60
+# Source0-md5:	a6b4e8814d32c080510104888f752d74
 URL:		https://xorg.freedesktop.org/
 BuildRequires:	Mesa-dri-devel
 %{?with_glamor:BuildRequires:	Mesa-libgbm-devel >= 21.3}
@@ -28,9 +28,11 @@ BuildRequires:	docbook-dtd43-xml
 BuildRequires:	libbsd-devel
 BuildRequires:	libdecor-devel
 BuildRequires:	libdrm-devel >= 2.4.109
+BuildRequires:	libei-devel >= 1.0.0
 %{?with_glamor:BuildRequires:	libepoxy-devel}
 # also possible: libmd, libsha, nettle, openssl
 BuildRequires:	libgcrypt-devel
+BuildRequires:	liboeffis-devel >= 1.0.0
 %{?with_xselinux:BuildRequires:	libselinux-devel >= 2.0.86}
 BuildRequires:	libtirpc-devel
 %{?with_libunwind:BuildRequires:	libunwind-devel}
@@ -43,7 +45,7 @@ BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
 # wayland-client
 BuildRequires:	wayland-devel >= 1.21.0
-BuildRequires:	wayland-protocols >= 1.28
+BuildRequires:	wayland-protocols >= 1.30
 %{?with_doc:BuildRequires:	xmlto}
 BuildRequires:	xorg-lib-libXau-devel
 BuildRequires:	xorg-lib-libXdmcp-devel
@@ -62,7 +64,7 @@ BuildRequires:	xorg-proto-fontsproto-devel >= 2.1.3
 BuildRequires:	xorg-proto-glproto-devel >= 1.4.17
 BuildRequires:	xorg-proto-inputproto-devel >= 2.3
 BuildRequires:	xorg-proto-kbproto-devel >= 1.0.3
-BuildRequires:	xorg-proto-presentproto-devel >= 1.2
+BuildRequires:	xorg-proto-presentproto-devel >= 1.3
 BuildRequires:	xorg-proto-randrproto-devel >= 1.6.0
 BuildRequires:	xorg-proto-recordproto-devel >= 1.13.99.1
 BuildRequires:	xorg-proto-renderproto-devel >= 0.11
@@ -80,6 +82,8 @@ BuildRequires:	xorg-proto-xwaylandproto-devel >= 1.0
 BuildRequires:	xz
 %{?with_glamor:Requires:	Mesa-libgbm >= 21.3}
 Requires:	libdrm >= 2.4.109
+Requires:	libei >= 1.0.0
+Requires:	liboeffis >= 1.0.0
 %{?with_xselinux:Requires:	libselinux >= 2.0.86}
 Requires:	wayland >= 1.21.0
 Requires:	xorg-app-xkbcomp
