@@ -1,0 +1,18 @@
+--- xwayland-24.1.2/os/backtrace.c.orig	2024-08-07 11:22:21.000000000 +0200
++++ xwayland-24.1.2/os/backtrace.c	2024-08-12 01:09:59.818418901 +0200
+@@ -92,12 +92,13 @@
+     ErrorFSigSafe("Registers at frame #%d:\n", frame);
+ 
+     for (i = 0; i < num_regs; i++) {
+-        uint64_t val;
+-        ret = unw_get_reg(&cursor, regs[i].regnum, &val);
++        unw_word_t unw_val;
++        ret = unw_get_reg(&cursor, regs[i].regnum, &unw_val);
+         if (ret < 0) {
+             ErrorFSigSafe("unw_get_reg(%s) failed: %s [%d]\n",
+                           regs[i].name, unw_strerror(ret), ret);
+         } else {
++            uint64_t val = unw_val;
+             ErrorFSigSafe("  %s: 0x%" PRIx64 "\n", regs[i].name, val);
+         }
+     }
