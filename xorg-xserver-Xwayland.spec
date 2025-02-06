@@ -116,7 +116,7 @@ zbudowanego serwera.
 
 %prep
 %setup -q -n xwayland-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %meson \
