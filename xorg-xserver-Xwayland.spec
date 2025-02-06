@@ -39,7 +39,7 @@ BuildRequires:	meson >= 0.56.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pixman-devel
 BuildRequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 2.042
 %{?with_systemtap:BuildRequires:	systemtap-sdt-devel}
 BuildRequires:	tar >= 1:1.22
 # wayland-client
@@ -119,7 +119,7 @@ zbudowanego serwera.
 %patch0 -p1
 
 %build
-%meson build \
+%meson \
 	-Dbuilder_addr="feedback@pld-linux.org" \
 	-Dbuilder_string="%{name}-%{version}-%{release}" \
 	-Ddefault_font_path="%{_fontsdir}/misc,%{_fontsdir}/TTF,%{_fontsdir}/OTF,%{_fontsdir}/Type1,%{_fontsdir}/100dpi,%{_fontsdir}/75dpi" \
@@ -138,12 +138,12 @@ zbudowanego serwera.
 	-Dxkb_output_dir=/var/lib/xkb \
 	%{!?with_xselinux:-Dxselinux=false}
 
-%ninja_build -C build
+%meson_build -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install -C build
 
 # xorg-xserver-common package (common dependency for Xwayland and Xorg)
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/xorg/protocol.txt
