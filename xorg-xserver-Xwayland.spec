@@ -138,12 +138,12 @@ zbudowanego serwera.
 	-Dxkb_output_dir=/var/lib/xkb \
 	%{!?with_xselinux:-Dxselinux=false}
 
-%meson_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%meson_install -C build
+%meson_install
 
 # xorg-xserver-common package (common dependency for Xwayland and Xorg)
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/xorg/protocol.txt
