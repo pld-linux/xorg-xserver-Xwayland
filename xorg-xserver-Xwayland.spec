@@ -11,12 +11,12 @@
 Summary:	Xwayland - X server integrated into a Wayland window system
 Summary(pl.UTF-8):	Xwayland - serwer X integrowalny w Wayland
 Name:		xorg-xserver-Xwayland
-Version:	24.1.13
+Version:	24.1.14
 Release:	1
 License:	MIT
 Group:		X11/Servers
 Source0:	https://xorg.freedesktop.org/releases/individual/xserver/xwayland-%{version}.tar.xz
-# Source0-md5:	f84a91c4d3aee2b18b1864fe2bbe78c3
+# Source0-md5:	a57a9590c84e5b5d9dd5dedd733a3367
 Patch0:		gcc14.patch
 URL:		https://xorg.freedesktop.org/
 BuildRequires:	Mesa-dri-devel
@@ -156,7 +156,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc COPYING README.md
+%doc COPYING README.md SECURITY.md
 %attr(755,root,root) %{_bindir}/Xwayland
 %{_desktopdir}/org.freedesktop.Xwayland.desktop
 %{_mandir}/man1/Xwayland.1*
