@@ -12,7 +12,7 @@ Summary:	Xwayland - X server integrated into a Wayland window system
 Summary(pl.UTF-8):	Xwayland - serwer X integrowalny w Wayland
 Name:		xorg-xserver-Xwayland
 Version:	24.1.14
-Release:	1
+Release:	2
 License:	MIT
 Group:		X11/Servers
 Source0:	https://xorg.freedesktop.org/releases/individual/xserver/xwayland-%{version}.tar.xz
